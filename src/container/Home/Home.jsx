@@ -12,15 +12,21 @@ class Home extends Component {
         <YoutubeComponent 
           time="12.00"
           title="React JS Tutorial"
-          desc="This is a simple React JS tutorial" />
+          desc="This is a simple React JS tutorial"
+          watch="16"
+          date="5 hari lalu" />
         <YoutubeComponent 
           time="1.30.05"
           title="Lets move on to Next JS"
-          desc="Dev Next JS" />
+          desc="Dev Next JS"
+          watch="16"
+          date="14 jam lalu" />
         <YoutubeComponent 
-        time="4.23"
-        title="Server-side rendering"
-        desc="Web Programming Unpas" />
+          time="4.23"
+          title="Server-side rendering"
+          desc="Web Programming Unpas"
+          watch="29 rb"
+          date="1 tahun lalu" />
         <YoutubeComponent />
       </div>
     );

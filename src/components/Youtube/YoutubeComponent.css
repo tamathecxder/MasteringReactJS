@@ -26,11 +26,12 @@ p.time {
   padding: 4px;
   font-size: 12px;
   font-weight: 500;
+  opacity: 0.8;
 }
 
 p.title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: bolder;
   text-transform: capitalize;
   margin: 0px;
   margin-top: 14px;
@@ -39,6 +40,12 @@ p.title {
 
 p.desc {
   font-size: 14px;
-  color: rgb(125, 125, 125);
-  margin-top: 0px;
+  color: rgb(69, 69, 69);
+  margin-top: 12px;
+}
+
+p.watchtime {
+  font-size: 14px;
+  color: rgb(69, 69, 69);
+  margin-top: -10px;
 }

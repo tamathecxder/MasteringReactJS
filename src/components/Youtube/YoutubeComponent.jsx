@@ -10,6 +10,7 @@ function YoutubeComponent(props) {
         </div>
         <p className="title">{props.title}</p>
         <p className="desc">{props.desc}</p>
+        <p className="watchtime">{props.watch} x ditonton &bull; {props.date}</p>
       </div>
   );
 }
@@ -17,7 +18,9 @@ function YoutubeComponent(props) {
 YoutubeComponent.defaultProps = {
   time: '00:00',
   title: 'Title',
-  desc: 'Description'
+  desc: 'Description',
+  watch: '1000',
+  date: '7 hari lalu'
 }
 
 export default YoutubeComponent;
