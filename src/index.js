@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HelloStateless from './components/HelloStateless';
-import StatefulComponent from './container/StatefulComponent';
+import Home from './container/Home/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HelloStateless />
-    <StatefulComponent />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
