@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
+  state = {
+    order: 4
+  }
   render() {
     return (
       <div className='container'>
@@ -16,7 +19,7 @@ class Product extends Component {
                     <div className="col-md-6 justify-content-end text-end position-relative">
                       <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" className='py-1' width={30} alt="troley" />
                       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        99+
+                        {this.state.order}
                         <span class="visually-hidden">unread messages</span>
                       </span>
                     </div>
@@ -33,7 +36,7 @@ class Product extends Component {
                   <div className="row justify-content-center">
                     <div className="col-md-6 d-flex">
                       <button className="minus me-2 btn btn-primary"> - </button>
-                      <input className='form-control' type="text" value={3} id="" />
+                      <input className='form-control text-center' type="text" value={3} id="" />
                       <button className="plus ms-2 btn btn-primary"> + </button>
                     </div>
                   </div>
