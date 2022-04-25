@@ -6,29 +6,44 @@ class LifeCycle extends Component {
     this.state = {
       count: 1,
     }
+    console.log('constructor');
   }
 
-  componentDerivedStateFromProps(prevProps, prevState) {
-    console.log('componentDerivedStateFromProps');
+  static getDerivedStateFromProps(props, state) {
+    console.log('getDerivedStateFromProps');
+    return null;
   }
 
   componentDidMount() {
     console.log('componentDidMount');
+    setTimeout(() => {
+      this.setState({
+        count: 2,
+      })
+    }, 3000);
   }
 
-  componentSnapshotBeforeUpdate(nextProps, nextState) {
-    console.log('componentSnapshotBeforeUpdate');
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate');
+    return true;
   }
 
-  componentDidUpdate() {
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate');
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('componentDidUpdate');
   }
+
 
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
 
   render() {
+    console.log('render');
     return (
       <div>
         <div style={{ padding: "10px" }}>
