@@ -6,11 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './container/Home/Home';
 import Product from './container/Product/Product';
+import LifeCycle from './container/LifeCycle/LifeCycleComponent';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <Home /> */}
-    <Product />
+    {/* <Product /> */}
+    <LifeCycle />
   </React.StrictMode>,
   document.getElementById('root')
 );
