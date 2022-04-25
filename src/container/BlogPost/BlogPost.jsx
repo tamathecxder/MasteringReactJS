@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import './BlogPost.css';
 import Footer from "../../components/BlogPost/Footer";
 import Header from "../../components/BlogPost/Header";
+import Post from "../../components/BlogPost/Post";
+import axios from 'axios';
 
 class BlogPost extends Component {
+  state = {
+    posts: []
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          posts: json
+        })
+      });
+  }
+
   render() {
     return (
       <>
@@ -27,103 +43,21 @@ class BlogPost extends Component {
             <div className="container">
 
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div className="col">
-                  <div className="card shadow-sm">
-                    <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card shadow-sm">
-                  <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card shadow-sm">
-                  <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col">
-                  <div className="card shadow-sm">
-                    <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card shadow-sm">
-                    <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card shadow-sm">
-                    <img className="img-fluid" src="https://placeimg.com/200/150/tech" height={255} alt="dummy_image" />
-
-                    <div className="card-body">
-                      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small className="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {
+                  this.state.posts.map((post) => {
+                    return (
+                      <Post 
+                        title={post.title}
+                        key={post.id}
+                        author="Yudistira Eka Pratama"
+                        desc={post.body.substring(0, 100) + "....."}
+                      />
+                    )
+                  })
+                }
+                {/* <Post title="Example posts" />
+                <Post title="Apa itu Stateless dan Stateful Component Pada React JS" />
+                <Post title="Penjelasan Mengenai LifeCycle Component Dalam React JS" /> */}
               </div>
             </div>
           </div>
