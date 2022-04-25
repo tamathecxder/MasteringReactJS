@@ -11,11 +11,19 @@ class BlogPost extends Component {
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(json => {
+    // fetch('https://jsonplaceholder.typicode.com/posts')
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     this.setState({
+    //       posts: json
+    //     })
+    //   });
+    
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => {
+        console.log(res.data)
         this.setState({
-          posts: json
+          posts: res.data
         })
       });
   }
