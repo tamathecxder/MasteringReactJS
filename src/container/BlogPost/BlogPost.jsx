@@ -18,8 +18,8 @@ class BlogPost extends Component {
     //       posts: json
     //     })
     //   });
-    
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+
+    axios.get('http://localhost:3004/posts')
       .then((res) => {
         console.log(res.data)
         this.setState({
@@ -57,7 +57,7 @@ class BlogPost extends Component {
                       <Post 
                         title={post.title}
                         key={post.id}
-                        author="Yudistira Eka Pratama"
+                        author={post.author}
                         desc={post.body.substring(0, 100) + "....."}
                       />
                     )
