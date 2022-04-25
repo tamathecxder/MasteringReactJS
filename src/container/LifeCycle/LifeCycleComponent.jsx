@@ -46,11 +46,7 @@ class LifeCycle extends Component {
     console.log('render');
     return (
       <div>
-        <div style={{ padding: "10px" }}>
-          <strong>LifeCycle Component / Siklus Hidup</strong>
-          <hr />
-          <button className='btn btn-success'>Button Component: {this.state.count}</button>
-        </div>
+        <button className='btn btn-success'>Button Component: {this.state.count}</button>
       </div>
     )
   }
