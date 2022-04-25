@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
-import Home from './container/Home/Home';
-import Product from './container/Product/Product';
+// import App from './App';
+// import Home from './container/Home/Home';
+// import Product from './container/Product/Product';
+import BlogPost from './container/BlogPost/BlogPost';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    {/* <Home /> */}
     {/* <Product /> */}
+    <BlogPost />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import YoutubeComponent from '../../components/Youtube/YoutubeComponent';
+// import YoutubeComponent from '../../components/Youtube/YoutubeComponent';
 import LifeCycle from '../LifeCycle/LifeCycleComponent';
 
 class Home extends Component {
