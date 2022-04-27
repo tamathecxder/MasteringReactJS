@@ -10,6 +10,10 @@ class BlogPost extends Component {
     posts: []
   }
 
+  removeDataHandler = (data) => {
+    console.log(data);
+  }
+
   componentDidMount() {
     // fetch('https://jsonplaceholder.typicode.com/posts')
     //   .then(response => response.json())
@@ -39,7 +43,7 @@ class BlogPost extends Component {
               <div className="col-lg-6 col-md-8 mx-auto">
                 <h1 className="fw-light">Simple Personal Blog</h1>
                 <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-                <p>
+                <p> 
                   <a href="#" className="btn btn-primary my-2 me-2">Main call to action</a>
                   <a href="#" className="btn btn-secondary my-2">Secondary action</a>
                 </p>
@@ -55,17 +59,13 @@ class BlogPost extends Component {
                   this.state.posts.map((post) => {
                     return (
                       <Post 
-                        title={post.title}
                         key={post.id}
-                        author={post.author}
-                        desc={post.body.substring(0, 100) + "....."}
+                        data={post}
+                        removeData={this.removeDataHandler}
                       />
                     )
                   })
                 }
-                {/* <Post title="Example posts" />
-                <Post title="Apa itu Stateless dan Stateful Component Pada React JS" />
-                <Post title="Penjelasan Mengenai LifeCycle Component Dalam React JS" /> */}
               </div>
             </div>
           </div>
