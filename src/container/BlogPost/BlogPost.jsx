@@ -8,7 +8,7 @@ import axios from 'axios';
 class BlogPost extends Component {
   state = {
     posts: [],
-    blogForm: {
+    blogPostForm: {
       userId: 1,
       id: ``,
       title: ``,
@@ -17,14 +17,20 @@ class BlogPost extends Component {
     }
   }
 
-  blogFormHandler = () => {
-    console.log('being typed...');
+  blogPostFormHandler = (e) => {
+    let newBlogPostForm = {...this.state.blogPostForm};
+    newBlogPostForm[e.target.name] = e.target.value;
+
+    this.setState({
+      blogPostForm: newBlogPostForm
+    }, () => {
+      console.log('The object value/state : ', this.state.blogPostForm);
+    });
   }
 
   getPostAPI = () => {
     axios.get('http://localhost:3004/posts')
       .then((res) => {
-        console.log(res.data)
         this.setState({
           posts: res.data
         })
@@ -73,11 +79,11 @@ class BlogPost extends Component {
                             <form>
                               <div className="mb-3">
                                 <label htmlFor="title" className="form-label">Post title</label>
-                                <input type="text" onChange={this.blogFormHandler} className="form-control" id="title" aria-describedby="title" />
+                                <input type="text" onChange={this.blogPostFormHandler} className="form-control" name="title" id="title" aria-describedby="title" />
                               </div>
                               <div className="mb-3">
-                                <label htmlFor="desc" className="form-label">Description</label>
-                                <textarea onChange={this.blogFormHandler} className="form-control" id="desc" rows="3"></textarea>
+                                <label htmlFor="body" className="form-label">Description</label>
+                                <textarea onChange={this.blogPostFormHandler} className="form-control" name="body" id="desc" rows="3"></textarea>
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
                             </form>
