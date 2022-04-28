@@ -12,20 +12,43 @@ class BlogPost extends Component {
       userId: 1,
       id: ``,
       title: ``,
-      author: ``,
+      author: `John Doe`,
       body: ``
     }
   }
 
   blogPostFormHandler = (e) => {
     let newBlogPostForm = {...this.state.blogPostForm};
+    let timestamps = new Date().getTime();
+    
+    newBlogPostForm.id = timestamps;
     newBlogPostForm[e.target.name] = e.target.value;
 
     this.setState({
       blogPostForm: newBlogPostForm
     }, () => {
-      console.log('The object value/state : ', this.state.blogPostForm);
+      // console.log('The object value/state : ', this.state.blogPostForm);
     });
+  }
+
+  submitDataHandler = (e) => {
+    e.preventDefault();
+
+    let data = this.state.blogPostForm;
+
+    console.log(this.state.blogPostForm);
+    axios.post('http://localhost:3004/posts', data)
+      .then((res, err) => {
+        console.log(res);
+
+        if (res.status == 201) {
+          alert('Your post has been successfully created!');
+        } else {
+          alert('Your post has an error!');
+        }
+
+        this.getPostAPI();
+      })
   }
 
   getPostAPI = () => {
@@ -79,13 +102,13 @@ class BlogPost extends Component {
                             <form>
                               <div className="mb-3">
                                 <label htmlFor="title" className="form-label">Post title</label>
-                                <input type="text" onChange={this.blogPostFormHandler} className="form-control" name="title" id="title" aria-describedby="title" />
+                                <input type="text" onChange={this.blogPostFormHandler} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Input your post title here" />
                               </div>
                               <div className="mb-3">
                                 <label htmlFor="body" className="form-label">Description</label>
-                                <textarea onChange={this.blogPostFormHandler} className="form-control" name="body" id="desc" rows="3"></textarea>
+                                <textarea onChange={this.blogPostFormHandler} className="form-control" name="body" id="desc" rows="3" placeholder="Input your litle describe about your post here"></textarea>
                               </div>
-                              <button type="submit" className="btn btn-primary">Submit</button>
+                              <button type="submit" onClick={this.submitDataHandler} className="btn btn-primary">Submit</button>
                             </form>
                           </div>
                         </div>
