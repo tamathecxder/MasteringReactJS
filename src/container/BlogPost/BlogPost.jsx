@@ -31,6 +31,15 @@ class BlogPost extends Component {
     });
   }
 
+  getPostAPI = () => {
+    axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
+      .then((res) => {
+        this.setState({
+          posts: res.data
+        })
+      });
+  }
+
   submitDataHandler = (e) => {
     e.preventDefault();
 
@@ -50,22 +59,17 @@ class BlogPost extends Component {
         this.getPostAPI();
       })
   }
-
-  getPostAPI = () => {
-    axios.get('http://localhost:3004/posts')
-      .then((res) => {
-        this.setState({
-          posts: res.data
-        })
-      });
-  }
-
+  
   removeDataHandler = (data) => {
     axios.delete(`http://localhost:3004/posts/${data}`)
       .then((res) => {
         console.log(res);
         this.getPostAPI()
       })
+  }
+
+  updateDataHandler = (data) => {
+    axios.put(`http://localhost:3004/${data}`); 
   }
 
   componentDidMount() {
@@ -134,6 +138,7 @@ class BlogPost extends Component {
                         key={post.id}
                         data={post}
                         removeData={this.removeDataHandler}
+                        updateData={this.updateDataHandler}
                       />
                     )
                   })
