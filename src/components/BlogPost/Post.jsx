@@ -14,6 +14,7 @@ const Post = (props) => {
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
                 <button type="button" className="btn btn-sm btn-outline-primary">View</button>
+                <button type="button" className="btn btn-sm btn-outline-dark mx-1" onClick={() => props.updateData(props.data.id)}>Edit</button>
                 <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => props.removeData(props.data.id)}>Remove</button>
               </div>
               <small className="text-muted d-md-none d-lg-inline">9 mins</small>
