@@ -15,7 +15,12 @@ const Post = (props) => {
               <div className="btn-group">
                 <button type="button" className="btn btn-sm btn-outline-primary">View</button>
                 <button type="button" className="btn btn-sm btn-outline-dark mx-1" onClick={() => props.updateData(props.data)} data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => props.removeData(props.data.id)}>Remove</button>
+                <button type="button" className="btn btn-sm btn-outline-danger" 
+                  onClick={() => {
+                    if ( window.confirm('Are you sure want to delete this post?') ) {
+                      props.removeData(props.data.id)
+                    }
+                  }}>Remove</button>
               </div>
               <small className="text-muted d-md-none d-lg-inline">9 mins</small>
             </div>
