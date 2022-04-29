@@ -18,9 +18,9 @@ class BlogPost extends Component {
   }
 
   blogPostFormHandler = (e) => {
-    let newBlogPostForm = {...this.state.blogPostForm};
+    let newBlogPostForm = { ...this.state.blogPostForm };
     let timestamps = new Date().getTime();
-    
+
     newBlogPostForm.id = timestamps;
     newBlogPostForm[e.target.name] = e.target.value;
 
@@ -42,7 +42,6 @@ class BlogPost extends Component {
 
   submitDataHandler = (e) => {
     e.preventDefault();
-
     let data = this.state.blogPostForm;
 
     console.log(this.state.blogPostForm);
@@ -59,17 +58,28 @@ class BlogPost extends Component {
         this.getPostAPI();
       })
   }
-  
+
   removeDataHandler = (data) => {
     axios.delete(`http://localhost:3004/posts/${data}`)
       .then((res) => {
         console.log(res);
-        this.getPostAPI()
+        this.getPostAPI();
       })
   }
 
   updateDataHandler = (data) => {
-    axios.put(`http://localhost:3004/${data}`); 
+    let updatedData = this.state.blogPostForm;
+
+    this.setState({
+      blogPostForm: data
+    }, () => {
+      console.log(data);
+    })
+    // axios.put(`http://localhost:3004/posts/${data}`, updatedData)
+    //   .then((res) => {
+    //     console.log(res);
+    //     this.getPostAPI();
+    //   }) 
   }
 
   componentDidMount() {
