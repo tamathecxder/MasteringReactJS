@@ -14,20 +14,22 @@ class BlogPost extends Component {
       title: ``,
       author: `John Doe`,
       body: ``
-    }
+    },
+    isUpdate: false,
+    btnText: 'Submit'
   }
 
   blogPostFormHandler = (e) => {
     let newBlogPostForm = { ...this.state.blogPostForm };
     let timestamps = new Date().getTime();
-
-    newBlogPostForm.id = timestamps;
+    let update = this.state.isUpdate;
+    if (!update) {
+      newBlogPostForm.id = timestamps;
+    }
     newBlogPostForm[e.target.name] = e.target.value;
 
     this.setState({
       blogPostForm: newBlogPostForm
-    }, () => {
-      // console.log('The object value/state : ', this.state.blogPostForm);
     });
   }
 
@@ -40,11 +42,22 @@ class BlogPost extends Component {
       });
   }
 
-  submitDataHandler = (e) => {
-    e.preventDefault();
+  clearFormHandler = () => {
+    this.setState({
+      isUpdate: false,
+      blogPostForm: {
+        userId: 1,
+        id: ``,
+        title: ``,
+        author: `John Doe`,
+        body: ``
+      }
+    });
+  }
+
+  postDataToAPI = () => {
     let data = this.state.blogPostForm;
 
-    console.log(this.state.blogPostForm);
     axios.post('http://localhost:3004/posts', data)
       .then((res, err) => {
         console.log(res);
@@ -55,8 +68,47 @@ class BlogPost extends Component {
           alert('Your post has an error!');
         }
 
+        this.clearFormHandler();
         this.getPostAPI();
+        console.log(res);
       })
+  }
+
+  putDataToAPI = () => {
+    const postID = this.state.blogPostForm.id
+    let data = this.state.blogPostForm;
+    axios.put(`http://localhost:3004/posts/${postID}`, data)
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Your post has been successfully updated!')
+        } else {
+          alert('Your post has failed to update');
+          return false;
+        }        
+        
+        this.clearFormHandler();
+        this.getPostAPI();
+        console.log(res);
+      })
+  }
+
+  updateDataHandler = (data) => {
+    this.setState({
+      blogPostForm: data,
+      isUpdate: true
+    }, () => {
+      console.log(data);
+    })
+  }
+
+  submitDataHandler = (e) => {
+    e.preventDefault();
+
+    if (this.state.isUpdate) {
+      this.putDataToAPI();
+    } else {
+      this.postDataToAPI();
+    }
   }
 
   removeDataHandler = (data) => {
@@ -67,19 +119,10 @@ class BlogPost extends Component {
       })
   }
 
-  updateDataHandler = (data) => {
-    let updatedData = this.state.blogPostForm;
+  resetButton = (e) => {
+    e.preventDefault();
 
-    this.setState({
-      blogPostForm: data
-    }, () => {
-      console.log(data);
-    })
-    // axios.put(`http://localhost:3004/posts/${data}`, updatedData)
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.getPostAPI();
-    //   }) 
+    this.clearFormHandler();
   }
 
   componentDidMount() {
@@ -87,6 +130,7 @@ class BlogPost extends Component {
   }
 
   render() {
+    const { btnText } = this.state;
     return (
       <>
         <Header />
@@ -116,13 +160,14 @@ class BlogPost extends Component {
                             <form>
                               <div className="mb-3">
                                 <label htmlFor="title" className="form-label">Post title</label>
-                                <input type="text" onChange={this.blogPostFormHandler} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Input your post title here" />
+                                <input type="text" value={this.state.blogPostForm.title} onChange={this.blogPostFormHandler} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Input your post title here" />
                               </div>
                               <div className="mb-3">
                                 <label htmlFor="body" className="form-label">Description</label>
-                                <textarea onChange={this.blogPostFormHandler} className="form-control" name="body" id="desc" rows="3" placeholder="Input your litle describe about your post here"></textarea>
+                                <textarea value={this.state.blogPostForm.body} onChange={this.blogPostFormHandler} className="form-control" name="body" id="desc" rows="3" placeholder="Input your litle describe about your post here"></textarea>
                               </div>
-                              <button type="submit" onClick={this.submitDataHandler} className="btn btn-primary">Submit</button>
+                              <button type="submit" onClick={this.submitDataHandler} className="btn btn-primary me-2">{btnText}</button>
+                              <button type="reset" onClick={this.resetButton} className="btn btn-warning">Reset</button>
                             </form>
                           </div>
                         </div>
