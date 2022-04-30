@@ -15,6 +15,7 @@ function Header(props) {
               <h4 className="text-white">App Links</h4>
               <ul className="list-unstyled">
                 <li><Link to="/" className="text-white">Home</Link></li>
+                <li><Link to="/posts" className="text-white">Posts</Link></li>
                 <li><Link to="/product" className="text-white">Product</Link></li>
                 <li><Link to="/lifecycle" className="text-white">Lifecycle Component</Link></li>
                 <li><Link to="/youtube-card" className="text-white">Youtube Cards</Link></li>

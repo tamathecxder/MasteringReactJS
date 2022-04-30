@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './BlogPost.css';
-import Footer from "../../../components/BlogPost/Header";
+import Footer from "../../../components/BlogPost/Footer";
 import Post from "../../../components/BlogPost/Post";
 import axios from 'axios';
 
@@ -118,6 +118,10 @@ class BlogPost extends Component {
       })
   }
 
+  detailPostHandler = (id) => {
+    this.props.history.push(`/posts/${id}`);
+  }
+
   resetButton = (e) => {
     e.preventDefault();
 
@@ -191,6 +195,7 @@ class BlogPost extends Component {
                         data={post}
                         removeData={this.removeDataHandler}
                         updateData={this.updateDataHandler}
+                        toDetail={this.detailPostHandler}
                       />
                     )
                   })
