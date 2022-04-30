@@ -14,8 +14,8 @@ import BlogPost from './container/BlogPost/BlogPost';
 ReactDOM.render(
   <React.StrictMode>
     <Home />
-    <Product />
-    <BlogPost />
+    {/* <Product />
+    <BlogPost /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

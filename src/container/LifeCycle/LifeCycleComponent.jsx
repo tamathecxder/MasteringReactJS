@@ -59,8 +59,21 @@ class LifeCycle extends Component {
   render() {
     console.log('render');
     return (
-      <div>
-        <button onClick={this.changeCount} className='btn btn-success'>Button Component: {this.state.count}</button>
+      <div className='container'>
+        <div className="row my-3 justify-content-center">
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-header bg-white">
+                <h4 className='card-title'>Lifecycle Component In React JS</h4>
+              </div>
+              <div className="card-body bg-white">
+                <button onClick={this.changeCount} className='btn btn-success'>Button Component</button>
+                <span className='badge p-3 bg-dark ms-2 rounded-circle'>{this.state.count}</span>
+              </div>
+              <div className="card-footer bg-white"></div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

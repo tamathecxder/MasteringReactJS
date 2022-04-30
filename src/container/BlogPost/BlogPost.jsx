@@ -133,8 +133,6 @@ class BlogPost extends Component {
     const { btnText } = this.state;
     return (
       <>
-        <Header />
-
         <main>
           <section className="py-5 text-center container">
             <div className="row py-lg-5">
