@@ -146,7 +146,6 @@ class BlogPost extends Component {
                   <button type="button" className="btn btn-primary my-2 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Make a simple post here
                   </button>
-                  <a href="#" className="btn btn-secondary my-2">Secondary action</a>
                 </p>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div className="modal-dialog">
