@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import './BlogPost.css';
-import Footer from "../../components/BlogPost/Footer";
-import Header from "../../components/BlogPost/Header";
-import Post from "../../components/BlogPost/Post";
+import Footer from "../../../components/BlogPost/Header";
+import Post from "../../../components/BlogPost/Post";
 import axios from 'axios';
 
 class BlogPost extends Component {

@@ -1,11 +1,13 @@
+// Libraries
 import React, { Component } from 'react';
-import YoutubeComponent from '../../components/Youtube/YoutubeComponent';
 import LifeCycle from '../LifeCycle/LifeCycleComponent';
+
+// Pages
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BlogPost from '../BlogPost/BlogPost';
 import Product from '../Product/Product';
-import Header from '../../components/BlogPost/Header';
 import YtCard from '../YtCard/YtCard';
+import Header from '../../../components/BlogPost/Header';
 
 class Home extends Component {
   state = {

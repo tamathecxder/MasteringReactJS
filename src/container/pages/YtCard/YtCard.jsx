@@ -1,5 +1,5 @@
 import React from 'react';
-import YoutubeComponent from '../../components/Youtube/YoutubeComponent';
+import YoutubeComponent from '../../../components/Youtube/YoutubeComponent';
 
 function YtCard(props) {
   return (
