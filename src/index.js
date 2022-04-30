@@ -7,14 +7,14 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import reportWebVitals from './reportWebVitals';
 // import App from './App';
-// import Home from './container/Home/Home';
-// import Product from './container/Product/Product';
+import Home from './container/Home/Home';
+import Product from './container/Product/Product';
 import BlogPost from './container/BlogPost/BlogPost';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Home /> */}
-    {/* <Product /> */}
+    <Home />
+    <Product />
     <BlogPost />
   </React.StrictMode>,
   document.getElementById('root')
