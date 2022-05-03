@@ -8,7 +8,7 @@ class ProductNgetest extends Component {
     counter: 10
   }
 
-  parentCounterChangeHandler = (newValue) => {
+  counterChangeHandler = (newValue) => {
     this.setState({
       counter: newValue
     });
@@ -39,7 +39,7 @@ class ProductNgetest extends Component {
                 </div>
 
                 {/* Child Component yang akan mengirimkan value ke parent component nya */}
-                <CardNgetes onCounterChange={(value) => this.parentCounterChangeHandler(value)} />
+                <CardNgetes onCounterChange={(value) => this.counterChangeHandler(value)} />
               </div>
             </div>
           </div>

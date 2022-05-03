@@ -1,32 +1,7 @@
 import React, { Component } from 'react';
+import Counter from '../Counter';
 
 class Card extends Component {
-  state = {
-    order: 4
-  }
-
-  orderChangeHandler = (newValue) => {
-    this.props.onOrderChange(newValue);
-  }
-
-  plusHandler = () => {
-    this.setState({
-      order: this.state.order + 1
-    }, () => {
-      this.orderChangeHandler(this.state.order);
-    })
-  }
-
-  minusHandler = () => {
-    if ( this.state.order > 0 ) {
-      this.setState ({ 
-        order: this.state.order - 1
-      }, () => {
-        this.orderChangeHandler(this.state.order);
-      })
-    }
-  }
-
   render() {
     return (
       <div className="card-body">
@@ -38,9 +13,7 @@ class Card extends Component {
         <div className='counter py-3'>
           <div className="row justify-content-center">
             <div className="col-md-6 d-flex">
-              <button onClick={this.minusHandler} className="minus me-2 btn btn-primary"> - </button>
-              <input className='form-control text-center' min={0} type="text" value={this.state.order} id="" />
-              <button onClick={this.plusHandler} className="plus ms-2 btn btn-primary"> + </button>
+              <Counter onOrderChange={(value) => this.props.onOrderChange(value)} />
             </div>
           </div>
         </div>
